@@ -1,0 +1,14 @@
+12
+##start
+start 0 0
+room1 0 0
+room2 0 0
+room3 0 0
+room4 0 0
+##end
+end 0 0
+start-room1
+room1-room2
+room2-room3
+room3-room4
+room4-end

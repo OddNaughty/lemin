@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.3)
+project(lem-in)
+set (CMAKE_C_FLAGS "-Wall -Wextra -Werror -pedantic -g")
+set (EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+include_directories("includes")
+add_subdirectory(libft)
+add_subdirectory(srcs)
