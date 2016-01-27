@@ -116,12 +116,12 @@ t_paths 	*find_paths(t_map *map)
 		tmp = tmp->next;
 	}
 	paths = NULL;
-	path = bfs(goals[0], goals[1]);
+	path = bfs(goals[1], goals[0]);
 	while (path)
 	{
 		add_to_paths(&paths, path);
 		mark_as_selected(&path);
-		path = bfs(goals[0], goals[1]);
+		path = bfs(goals[1], goals[0]);
 	}
 	return (paths);
 }
@@ -145,14 +145,15 @@ int 		solve_lemin(t_map *map)
 		return (error("No paths was found, bitch"));
 	while (paths)
 	{
-		printf("From end\n");
+		printf("New way: ");
 		t_d *current = paths->current;
 		while (current)
 		{
-			printf("From %s", current->room->name);
+			printf("| %s ", current->room->name);
 			current = current->prev;
 		}
 		paths = paths->next;
+		printf("\n");
 	}
 //	path = bfs(goals[0], goals[1]);
 //	if (path == NULL)

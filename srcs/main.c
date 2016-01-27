@@ -18,21 +18,21 @@ void 	print_neighbor(t_path *s)
 int 	main(int ac, char **av)
 {
 	t_map	*map;
-	t_room	*tmp;
+//	t_room	*tmp;
 
 	(void) av;
 	if (ac != 1)
 		return (error("Lemin is reading on standard input"));
 	if ((map = get_map()) == NULL)
 		return (SUCCESS);
-	tmp = map->rooms;
-	while (tmp)
-	{
-		printf("Room %s and it neighbors: ", tmp->name);
-		print_neighbor(tmp->torooms);
-		printf("\n");
-		tmp = tmp->next;
-	}
+//	tmp = map->rooms;
+//	while (tmp)
+//	{
+//		printf("Room %s and it neighbors: ", tmp->name);
+//		print_neighbor(tmp->torooms);
+//		printf("\n");
+//		tmp = tmp->next;
+//	}
 	solve_lemin(map);
 	return (SUCCESS);
 }
