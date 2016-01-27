@@ -25,6 +25,7 @@ typedef struct		s_room
 	int				x;
 	int				y;
 	int				type;
+	int 			selected;
 	struct s_path	*torooms;
 	struct s_room	*next;
 }					t_room;
@@ -41,6 +42,20 @@ typedef struct		s_map
 	t_room			*rooms;
 }					t_map;
 
+typedef struct		s_paths
+{
+	int				length;
+	struct s_d		*current;
+	struct s_paths	*next;
+}					t_paths;
+
+typedef struct		s_d
+{
+	t_room			*room;
+	struct s_d		*next;
+	struct s_d		*prev;
+}					t_d;
+
 int 				add_command(t_room **rooms, char *str);
 void 				add_room_to_path(t_path **rooms, t_room *new);
 int 				add_to_rooms(t_room **rooms, char *str);
@@ -53,6 +68,9 @@ int 				create_and_add_room(t_room **rooms, char *str, int type);
 t_map 				*get_map();
 t_room				*get_rooms();
 int					get_ants();
+
+t_d					*bfs(t_room *start, t_room *end);
+int 				solve_lemin(t_map *map);
 
 int					exit_error(char *str);
 int					error(char *str);

@@ -24,6 +24,16 @@ int			check_if_pipable(t_room *rooms)
 	return (SUCCESS);
 }
 
+int 		already_in_pipes(t_path *p, t_room *room)
+{
+	while (p)
+	{
+		if (p->neighbor == room)
+			return (SUCCESS);
+		p = p->next;
+	}
+	return (FAILURE);
+}
 
 int			add_pipe(t_room **rooms, char *str)
 {
@@ -47,8 +57,11 @@ int			add_pipe(t_room **rooms, char *str)
 		return (error("The first room of the pipe doesn't exists"));
 	if (both[1] == NULL)
 		return (error("The second room of the pipe doesn't exists"));
-	add_room_to_path(&both[0]->torooms, both[1]);
-	add_room_to_path(&both[1]->torooms, both[0]);
+	if (already_in_pipes(both[0]->torooms, both[1]) == FAILURE)
+	{
+		add_room_to_path(&both[0]->torooms, both[1]);
+		add_room_to_path(&both[1]->torooms, both[0]);
+	}
 	ft_freechartab(&split);
 	return (PIPE);
 }
@@ -89,6 +102,7 @@ t_room		*create_room(t_room *rooms, char *str, int type)
 	new->type = type;
 	new->next = NULL;
 	new->torooms = NULL;
+	new->selected = FT_FALSE;
 	ft_freechartab(&room);
 	return (new);
 }
@@ -125,7 +139,11 @@ int 		create_and_add_room(t_room **rooms, char *str, int type)
 	{
 		tmp = *rooms;
 		while (tmp->next != NULL)
+		{
+			if (type != ROOM && tmp->type == type)
+				return (error(type == END ? "There is 2 ends you stupid hobbit" : "There is 2 starts you stupid hobbit"));
 			tmp = tmp->next;
+		}
 		tmp->next = new;
 	}
 	return (SUCCESS);
