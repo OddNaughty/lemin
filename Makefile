@@ -16,7 +16,8 @@ INCLUDES =	-I includes/
 SRCDIR =	srcs/
 SRCFILES =	main.c\
 			error.c\
-			acquisition.c
+			acquisition.c\
+			parsing.c
 SRCS =		$(addprefix $(SRCDIR), $(SRCFILES))
 OBJ =		$(SRCS:.c=.o)
 LIB =		-L libft/ -lft

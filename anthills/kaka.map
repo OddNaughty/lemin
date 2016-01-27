@@ -2,6 +2,11 @@
 ##start
 start 1 2
 1 2 3
+2 3 4
 ##end
 end 4 5
-start--1
+start-1
+2-start
+1-end
+end-2
+

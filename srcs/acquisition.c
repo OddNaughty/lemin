@@ -18,7 +18,7 @@ int 	add_command(t_room **rooms, char *str)
 	if (get_next_line(0, &str) < 0)
 		return (exit_error("Error while reading file"));
 	if (type != FAILURE)
-		return (create_room(rooms, str, type));
+		return (create_and_add_room(rooms, str, type));
 	return (SUCCESS);
 }
 
@@ -34,7 +34,7 @@ int 	add_to_rooms(t_room **rooms, char *str)
 	}
 	if (ft_strchr(str, '-'))
 		return (add_pipe(rooms, str));
-	return (create_room(rooms, str, ROOM));
+	return (create_and_add_room(rooms, str, ROOM));
 }
 
 t_room	*get_rooms_and_pipes()
@@ -51,6 +51,15 @@ t_room	*get_rooms_and_pipes()
 		if (ret == FAILURE)
 			return (NULL);
 		else if (ret == PIPE)
+			break ;
+	}
+	if (check_if_pipable(rooms) == FAILURE)
+		return (NULL);
+	while (get_next_line(0, &str) > 0)
+	{
+		ret = add_to_rooms(&rooms, str);
+		ft_strdel(&str);
+		if (ret != PIPE)
 			break ;
 	}
 	return (rooms);
@@ -76,8 +85,10 @@ t_map 	*get_map()
 
 	map = malloc(sizeof(t_map));
 	map->ants = get_ants();
+	if (map->ants == 0)
+		exit_error("The number of ants is 0, so lemin is finished :).");
 	map->rooms = get_rooms_and_pipes();
-	if (map->ants == 0 || map->rooms == NULL)
+	if (map->rooms == NULL)
 		return (NULL);
 	return (map);
 }

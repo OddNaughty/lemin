@@ -29,6 +29,12 @@ typedef struct		s_room
 	struct s_room	*next;
 }					t_room;
 
+typedef struct		s_path
+{
+	t_room 			*neighbor;
+	struct s_path	*next;
+}					t_path;
+
 typedef struct		s_map
 {
 	int 			ants;
@@ -36,9 +42,13 @@ typedef struct		s_map
 }					t_map;
 
 int 				add_command(t_room **rooms, char *str);
+void 				add_room_to_path(t_path **rooms, t_room *new);
 int 				add_to_rooms(t_room **rooms, char *str);
 int 				add_pipe(t_room **rooms, char *str);
-int 				create_room(t_room **rooms, char *str, int type);
+int					check_if_pipable(t_room *rooms);
+int					check_room_validity(t_room *rooms, char *str);
+t_room				*create_room(t_room *rooms, char *str, int type);
+int 				create_and_add_room(t_room **rooms, char *str, int type);
 
 t_map 				*get_map();
 t_room				*get_rooms();
