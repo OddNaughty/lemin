@@ -103,6 +103,7 @@ t_room		*create_room(t_room *rooms, char *str, int type)
 	new->next = NULL;
 	new->torooms = NULL;
 	new->selected = FT_FALSE;
+	new->ant_number = 0;
 	ft_freechartab(&room);
 	return (new);
 }

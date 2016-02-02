@@ -119,6 +119,7 @@ t_paths 	*find_paths(t_map *map)
 	path = bfs(goals[1], goals[0]);
 	while (path)
 	{
+		path = path->prev;
 		add_to_paths(&paths, path);
 		mark_as_selected(&path);
 		path = bfs(goals[1], goals[0]);
@@ -126,48 +127,97 @@ t_paths 	*find_paths(t_map *map)
 	return (paths);
 }
 
-int 		solve_lemin(t_map *map)
+void 		count_paths_length(t_paths **paths)
 {
-	t_room	*goals[2] = {NULL, NULL};
-	t_room	*tmp;
-	t_paths	*paths;
+	t_paths	*tmp;
+	t_d		*tmp2;
+	t_d		*tmp3;
+	int 	length;
 
-	tmp = map->rooms;
+	tmp = *paths;
 	while (tmp)
 	{
-		if (tmp->type == START)
-			goals[0] = tmp;
-		else if (tmp->type == END)
-			goals[1] = tmp;
+		tmp2 = tmp->current;
+		length = 0;
+		while (tmp2)
+		{
+			tmp3 = tmp2;
+			length++;
+			tmp2 = tmp2->prev;
+			tmp2->next = tmp3;
+		}
+		tmp->length = length;
 		tmp = tmp->next;
 	}
-	if ((paths = find_paths(map)) == NULL)
-		return (error("No paths was found, bitch"));
+}
+
+int 		send_path(t_d *path)
+{
+	t_d		*tmp;
+	t_d		*tmp2;
+	int 	success;
+
+	tmp = path;
+	success = SUCCESS;
+	while (tmp)
+	{
+		if (tmp->room->ant_number)
+		{
+			printf("L%d-%s ", tmp->room->ant_number, tmp->room->name);
+			success = FAILURE;
+		}
+		printf("tmp: %s ", tmp->room->name);
+		tmp2 = tmp;
+		tmp = tmp->prev;
+	}
+	while (tmp2->next)
+	{
+		printf("tmp2: %s ", tmp2->room->name);
+		tmp2->room->ant_number = tmp2->next->room->ant_number;
+		tmp2 = tmp2->next;
+	}
+	printf("Wowlowlwowolo \n");
+	tmp2->room->ant_number = 0;
+	return (success);
+}
+
+int 		send_ants(t_paths *paths)
+{
+	int 	ret;
+	int 	ret2;
+
+	ret2 = SUCCESS;
 	while (paths)
 	{
-		printf("New way: ");
-		t_d *current = paths->current;
-		while (current)
-		{
-			printf("| %s ", current->room->name);
-			current = current->prev;
-		}
+		ret = send_path(paths->current);
+		if (ret == FAILURE)
+			ret2 = FAILURE;
 		paths = paths->next;
+	}
+	return (ret2);
+}
+
+void 		print_paths(int ants, t_paths *paths)
+{
+	int sended = 1;
+
+	paths->current->room->ant_number = sended;
+	while (send_path(paths->current) != SUCCESS)
+	{
+		sended++;
+		if (sended < ants)
+			paths->current->room->ant_number = sended;
 		printf("\n");
 	}
-//	path = bfs(goals[0], goals[1]);
-//	if (path == NULL)
-//		return (error("No paths was found, bitch"));
-//	mark_as_selected(&path);
-//	ft_putendl("Un autre passage vers la vie ?\n");
-//	path = bfs(goals[0], goals[1]);
-//	if (path == NULL)
-//		return (error("No paths was found, bitch"));
-//	mark_as_selected(&path);
-//	while (path)
-//	{
-//		printf("From %s and visited: %d\n", path->room->name, path->room->selected);
-//		path = path->prev;
-//	}
+}
+
+int 		solve_lemin(t_map *map)
+{
+	t_paths	*paths;
+
+	if ((paths = find_paths(map)) == NULL)
+		return (error("No paths was found, bitch"));
+	count_paths_length(&paths);
+	print_paths(map->ants, paths);
 	return (SUCCESS);
 }

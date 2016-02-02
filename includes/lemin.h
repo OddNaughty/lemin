@@ -26,6 +26,7 @@ typedef struct		s_room
 	int				y;
 	int				type;
 	int 			selected;
+	int 			ant_number;
 	struct s_path	*torooms;
 	struct s_room	*next;
 }					t_room;
