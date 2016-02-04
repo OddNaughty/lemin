@@ -18,6 +18,8 @@ SRCFILES =	main.c\
 			error.c\
 			acquisition.c\
 			parsing.c\
+			bfs.c\
+			paths.c\
 			solving.c
 SRCS =		$(addprefix $(SRCDIR), $(SRCFILES))
 OBJ =		$(SRCS:.c=.o)
@@ -60,4 +62,4 @@ rre: remake re
 run: all
 	@echo "\033[32m[Running Binary]\033[0m" | tr -d '\n'
 	@echo ""
-	$(NAME) < anthills/kaka.map
+	$(NAME) < anthills/bfs.map

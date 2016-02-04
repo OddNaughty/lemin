@@ -66,6 +66,12 @@ int					check_room_validity(t_room *rooms, char *str);
 t_room				*create_room(t_room *rooms, char *str, int type);
 int 				create_and_add_room(t_room **rooms, char *str, int type);
 
+t_d					*bfs(t_room *s, t_room *e);
+
+void 				preparing_paths_for_sending(t_paths **paths);
+t_paths 			*find_paths(t_map *map);
+
+
 t_map 				*get_map();
 t_room				*get_rooms();
 int					get_ants();

@@ -1,17 +1,25 @@
-//
-// Created by Camille WAGNER on 1/21/16.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   acquisition.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwagner <cwagner@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/04 16:09:41 by cwagner           #+#    #+#             */
+/*   Updated: 2016/02/04 17:16:06 by cwagner          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lemin.h"
 
-int 	add_command(t_room **rooms, char *str)
+int			add_command(t_room **rooms, char *str)
 {
-	int 	type;
+	int		type;
 
 	type = FAILURE;
-	if (ft_strcmp(str+2, CMD_START) == SUCCESS)
+	if (ft_strcmp(str + 2, CMD_START) == SUCCESS)
 		type = START;
-	else if (ft_strcmp(str+2, CMD_END) == SUCCESS)
+	else if (ft_strcmp(str + 2, CMD_END) == SUCCESS)
 		type = END;
 	else
 		ft_putendl("La prochaine commande sera ignorée");
@@ -22,7 +30,7 @@ int 	add_command(t_room **rooms, char *str)
 	return (SUCCESS);
 }
 
-int 	add_to_rooms(t_room **rooms, char *str)
+int			add_to_rooms(t_room **rooms, char *str)
 {
 	if (*str == 'L')
 		return (error("A room cannot start with a L"));
@@ -37,11 +45,11 @@ int 	add_to_rooms(t_room **rooms, char *str)
 	return (create_and_add_room(rooms, str, ROOM));
 }
 
-t_room	*get_rooms_and_pipes()
+t_room		*get_rooms_and_pipes(void)
 {
 	t_room	*rooms;
-	char 	*str;
-	int 	ret;
+	char	*str;
+	int		ret;
 
 	rooms = NULL;
 	while (get_next_line(0, &str) > 0)
@@ -65,21 +73,22 @@ t_room	*get_rooms_and_pipes()
 	return (rooms);
 }
 
-int 	get_ants()
+int			get_ants(void)
 {
-	char 	*str;
-	int 	ants;
+	char	*str;
+	int		ants;
 
 	if (get_next_line(0, &str) < 1)
 		return (exit_error("Error while reading file"));
 	if (ft_strcheck(str, ft_isdigit) == FAILURE)
-		return (exit_error("The first line of the file is the NUMBER of ants you dumbass"));
+		return (exit_error("The first line of the file"
+		"is the NUMBER of ants you dumbass"));
 	ants = ft_atoi(str);
 	ft_strdel(&str);
 	return (ants);
 }
 
-t_map 	*get_map()
+t_map		*get_map(void)
 {
 	t_map	*map;
 
@@ -92,4 +101,3 @@ t_map 	*get_map()
 		return (NULL);
 	return (map);
 }
-

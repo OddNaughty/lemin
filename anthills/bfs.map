@@ -1,4 +1,4 @@
-10
+3
 ##start
 start 1 2
 1 2 3
@@ -8,6 +8,7 @@ start 1 2
 end 4 5
 2-1
 2-3
+start-3
 start-1
 end-2
 end-3
