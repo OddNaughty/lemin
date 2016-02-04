@@ -62,4 +62,4 @@ rre: remake re
 run: all
 	@echo "\033[32m[Running Binary]\033[0m" | tr -d '\n'
 	@echo ""
-	$(NAME) < anthills/bfs.map
+	$(NAME) < anthills/3000
