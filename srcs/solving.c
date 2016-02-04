@@ -139,12 +139,14 @@ void 		count_paths_length(t_paths **paths)
 	{
 		tmp2 = tmp->current;
 		length = 0;
+		tmp2->next = NULL;
 		while (tmp2)
 		{
 			tmp3 = tmp2;
 			length++;
 			tmp2 = tmp2->prev;
-			tmp2->next = tmp3;
+			if (tmp2)
+				tmp2->next = tmp3;
 		}
 		tmp->length = length;
 		tmp = tmp->next;
@@ -166,18 +168,19 @@ int 		send_path(t_d *path)
 			printf("L%d-%s ", tmp->room->ant_number, tmp->room->name);
 			success = FAILURE;
 		}
-		printf("tmp: %s ", tmp->room->name);
 		tmp2 = tmp;
 		tmp = tmp->prev;
 	}
-	while (tmp2->next)
+//	printf("Other way %s?\n", tmp2->room->name);
+	while (tmp2)
 	{
-		printf("tmp2: %s ", tmp2->room->name);
-		tmp2->room->ant_number = tmp2->next->room->ant_number;
+//		printf("Fourmis dans %s: %d\n", tmp2->room->name, tmp2->room->ant_number);
+		if (tmp2->next)
+			tmp2->room->ant_number = tmp2->next->room->ant_number;
+		else
+			tmp2->room->ant_number = 0;
 		tmp2 = tmp2->next;
 	}
-	printf("Wowlowlwowolo \n");
-	tmp2->room->ant_number = 0;
 	return (success);
 }
 
@@ -205,7 +208,7 @@ void 		print_paths(int ants, t_paths *paths)
 	while (send_path(paths->current) != SUCCESS)
 	{
 		sended++;
-		if (sended < ants)
+		if (sended <= ants)
 			paths->current->room->ant_number = sended;
 		printf("\n");
 	}

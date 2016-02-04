@@ -57,7 +57,7 @@ re: fclean all
 
 rre: remake re
 
-run: re
+run: all
 	@echo "\033[32m[Running Binary]\033[0m" | tr -d '\n'
 	@echo ""
-	$(NAME) < anthills/30
+	$(NAME) < anthills/kaka.map
