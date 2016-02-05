@@ -6,7 +6,7 @@
 /*   By: cwagner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/13 22:58:05 by cwagner           #+#    #+#             */
-/*   Updated: 2015/04/13 22:58:09 by cwagner          ###   ########.fr       */
+/*   Updated: 2016/02/05 13:53:52 by cwagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ t_gnl		*add_to_list(t_gnl **b_list, int fd)
 		if (tmp->fd != fd)
 			tmp->next = new_one;
 		else
-			return (free(new_one), tmp);
+		{
+			free(new_one);
+			return (tmp);
+		}
 	}
 	return (new_one);
 }
@@ -103,7 +106,10 @@ int			get_next_line(int const fd, char **line)
 	link = add_to_list(&b_list, fd);
 	if (link->wip == NULL || ft_strchr(link->wip, '\n') == NULL)
 		if ((ret = read_line2(fd, &(link->wip))) != 1)
-			return (free_list(&b_list), ret);
+		{
+			free_list(&b_list);
+			return (ret);
+		}
 	wip_to_line(line, &(link->wip));
 	return (1);
 }

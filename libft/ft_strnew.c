@@ -6,7 +6,7 @@
 /*   By: cwagner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/26 12:36:31 by cwagner           #+#    #+#             */
-/*   Updated: 2014/03/27 12:01:18 by cwagner          ###   ########.fr       */
+/*   Updated: 2016/02/05 13:52:46 by cwagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ char	*ft_strnew(size_t size)
 	str = malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (NULL);
-	i = -1;
-	while (i++, i < (size + 1))
+	i = 0;
+	while (i < (size + 1))
+	{
 		str[i] = '\0';
+		i++;
+	}
 	return (str);
 }

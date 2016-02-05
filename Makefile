@@ -18,6 +18,7 @@ SRCFILES =	main.c\
 			error.c\
 			acquisition.c\
 			parsing.c\
+			parsing2.c\
 			bfs.c\
 			paths.c\
 			solving.c

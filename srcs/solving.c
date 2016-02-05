@@ -1,10 +1,18 @@
-//
-// Created by Camille WAGNER on 1/27/16.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solving.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwagner <cwagner@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/05 13:36:01 by cwagner           #+#    #+#             */
+/*   Updated: 2016/02/05 13:36:05 by cwagner          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lemin.h"
 
-static void 	display(int ant_number, char *room_name)
+static void		display(int ant_number, char *room_name)
 {
 	ft_putstr("L");
 	ft_putnbr(ant_number);
@@ -13,11 +21,11 @@ static void 	display(int ant_number, char *room_name)
 	ft_putstr(" ");
 }
 
-static int 		send_path(t_d *path)
+static int		send_path(t_d *path)
 {
 	t_d		*tmp;
 	t_d		*tmp2;
-	int 	success;
+	int		success;
 
 	tmp = path;
 	success = SUCCESS;
@@ -42,9 +50,9 @@ static int 		send_path(t_d *path)
 	return (success);
 }
 
-static void 	print_paths(int ants, t_paths *paths)
+static void		print_paths(int ants, t_paths *paths)
 {
-	int 	sended;
+	int		sended;
 	int		success;
 	t_paths	*tmp;
 
@@ -68,7 +76,7 @@ static void 	print_paths(int ants, t_paths *paths)
 	}
 }
 
-int 		solve_lemin(t_map *map)
+int				solve_lemin(t_map *map)
 {
 	t_paths	*paths;
 

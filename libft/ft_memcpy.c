@@ -6,7 +6,7 @@
 /*   By: cwagner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 15:53:55 by cwagner           #+#    #+#             */
-/*   Updated: 2014/03/27 11:57:28 by cwagner          ###   ########.fr       */
+/*   Updated: 2016/02/05 13:51:56 by cwagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ void	*ft_mem_not_null_cpy(void *s1, void *s2, size_t n)
 
 	cp1 = s1;
 	cp2 = s2;
-	i = -1;
-	while (i++, i < (int)n)
+	i = 0;
+	while (i < (int)n)
 	{
 		if (cp2[i] != 0)
 			cp1[i] = cp2[i];
+		i++;
 	}
 	return (s1);
 }

@@ -1,11 +1,19 @@
-//
-// Created by Camille WAGNER on 2/4/16.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   paths.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwagner <cwagner@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/05 13:32:32 by cwagner           #+#    #+#             */
+/*   Updated: 2016/02/05 13:34:45 by cwagner          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <limits.h>
 #include "lemin.h"
 
-static void 	mark_as_selected(t_d **p)
+static void	mark_as_selected(t_d **p)
 {
 	t_d		*tmp;
 
@@ -18,7 +26,7 @@ static void 	mark_as_selected(t_d **p)
 	}
 }
 
-static void 	add_to_paths(t_paths **paths, t_d *path)
+static void	add_to_paths(t_paths **paths, t_d *path)
 {
 	t_paths	*new;
 	t_paths	*tmp;
@@ -37,11 +45,11 @@ static void 	add_to_paths(t_paths **paths, t_d *path)
 	}
 }
 
-static int 		count_path_length_and_chaining(t_d **path)
+static int	count_path_length_and_chaining(t_d **path)
 {
 	t_d		*tmp;
 	t_d		*tmp2;
-	int 	length;
+	int		length;
 
 	length = 0;
 	tmp2 = *path;
@@ -57,13 +65,15 @@ static int 		count_path_length_and_chaining(t_d **path)
 	return (length);
 }
 
-t_paths 		*find_paths(t_map *map)
+t_paths		*find_paths(t_map *map)
 {
 	t_d		*path;
 	t_paths	*paths;
-	t_room	*goals[2] = {NULL, NULL};
+	t_room	*goals[2];
 	t_room	*tmp;
 
+	goals[0] = NULL;
+	goals[1] = NULL;
 	tmp = map->rooms;
 	while (tmp)
 	{
@@ -84,17 +94,17 @@ t_paths 		*find_paths(t_map *map)
 	return (paths);
 }
 
-void 			preparing_paths_for_sending(t_paths **paths)
+void		preparing_paths_for_sending(t_paths **paths)
 {
 	t_paths	*tmp;
-	int 	min;
-
+	int		min;
 
 	tmp = *paths;
 	min = INT_MAX;
 	while (tmp)
 	{
-		if ((tmp->length = count_path_length_and_chaining(&(tmp->current))) < min)
+		if ((tmp->length = count_path_length_and_chaining(&(tmp->current)))
+			< min)
 			min = tmp->length;
 		tmp = tmp->next;
 	}

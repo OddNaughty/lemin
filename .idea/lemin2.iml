@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/srcs/bfs.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/srcs/solving.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/srcs/main.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/srcs/parsing2.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/srcs/paths.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/srcs/parsing.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/srcs/acquisition.c" isTestSource="false" />
