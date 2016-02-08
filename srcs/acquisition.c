@@ -15,6 +15,7 @@
 int			add_command(t_room **rooms, char *str)
 {
 	int		type;
+	int 	ret;
 
 	type = FAILURE;
 	if (ft_strcmp(str + 2, CMD_START) == SUCCESS)
@@ -23,11 +24,13 @@ int			add_command(t_room **rooms, char *str)
 		type = END;
 	else
 		ft_putendl("La prochaine commande sera ignorée");
-	if (get_next_line(0, &str) < 0)
+	ret = get_next_line(0, &str);
+	ft_putendl(str);
+	if (ret < 0)
 		return (exit_error("Error while reading file"));
 	if (type != FAILURE)
 		return (create_and_add_room(rooms, str, type));
-	return (SUCCESS);
+	return (COMMAND);
 }
 
 int			add_to_rooms(t_room **rooms, char *str)
@@ -38,7 +41,7 @@ int			add_to_rooms(t_room **rooms, char *str)
 	{
 		if (*(str + 1) == '#')
 			return (add_command(rooms, str));
-		return (SUCCESS);
+		return (COMMENT);
 	}
 	if (ft_strchr(str, '-'))
 		return (add_pipe(rooms, str));
@@ -54,6 +57,7 @@ t_room		*get_rooms_and_pipes(void)
 	rooms = NULL;
 	while (get_next_line(0, &str) > 0)
 	{
+		ft_putendl(str);
 		ret = add_to_rooms(&rooms, str);
 		ft_strdel(&str);
 		if (ret == FAILURE)
@@ -65,9 +69,10 @@ t_room		*get_rooms_and_pipes(void)
 		return (NULL);
 	while (get_next_line(0, &str) > 0)
 	{
+		ft_putendl(str);
 		ret = add_to_rooms(&rooms, str);
 		ft_strdel(&str);
-		if (ret != PIPE)
+		if (ret != PIPE && ret != COMMENT && ret != COMMAND)
 			break ;
 	}
 	return (rooms);
@@ -94,6 +99,8 @@ t_map		*get_map(void)
 
 	map = malloc(sizeof(t_map));
 	map->ants = get_ants();
+	ft_putnbr(map->ants);
+	ft_putendl("");
 	if (map->ants == 0)
 		exit_error("The number of ants is 0, so lemin is finished :).");
 	map->rooms = get_rooms_and_pipes();

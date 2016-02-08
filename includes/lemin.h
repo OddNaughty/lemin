@@ -29,7 +29,9 @@ enum					e_token
 	ROOM,
 	START,
 	END,
-	PIPE
+	PIPE,
+	COMMENT,
+	COMMAND
 };
 
 struct					s_room

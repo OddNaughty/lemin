@@ -13,19 +13,6 @@
 #include "libft.h"
 #include "lemin.h"
 
-static void print_map(t_map *map)
-{
-	t_room	*tmp;
-
-	ft_putnbr(map->ants);
-	ft_putendl("");
-	tmp = map->rooms;
-	while (tmp)
-	{
-
-	}
-}
-
 int			main(int ac, char **av)
 {
 	t_map	*map;
@@ -35,7 +22,6 @@ int			main(int ac, char **av)
 		return (error("Lemin is reading on standard input"));
 	if ((map = get_map()) == NULL)
 		return (SUCCESS);
-	print_map(map);
 	solve_lemin(map);
 	return (SUCCESS);
 }
