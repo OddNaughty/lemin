@@ -15,7 +15,7 @@
 int			add_command(t_room **rooms, char *str)
 {
 	int		type;
-	int 	ret;
+	int		ret;
 
 	type = FAILURE;
 	if (ft_strcmp(str + 2, CMD_START) == SUCCESS)
@@ -71,7 +71,6 @@ t_room		*get_rooms_and_pipes(void)
 	{
 		ft_putendl(str);
 		ret = add_to_rooms(&rooms, str);
-		ft_strdel(&str);
 		if (ret != PIPE && ret != COMMENT && ret != COMMAND)
 			break ;
 	}

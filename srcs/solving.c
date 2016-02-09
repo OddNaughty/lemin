@@ -64,11 +64,13 @@ static void		print_paths(int ants, t_paths *paths)
 		while (tmp)
 		{
 			if (sended <= ants && (ants - sended) > tmp->length - 1)
+			{
 				tmp->current->room->ant_number = sended;
+				sended++;
+			}
 			if (send_path(tmp->current) == FAILURE)
 				success = FAILURE;
 			tmp = tmp->next;
-			sended++;
 		}
 		if (success == SUCCESS)
 			break ;

@@ -16,9 +16,8 @@
     <list default="true" id="7f64ebc7-6340-486e-8758-3098c51b4660" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lemin2.iml" afterPath="$PROJECT_DIR$/.idea/lemin2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lemin.h" afterPath="$PROJECT_DIR$/includes/lemin.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/acquisition.c" afterPath="$PROJECT_DIR$/srcs/acquisition.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/main.c" afterPath="$PROJECT_DIR$/srcs/main.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/solving.c" afterPath="$PROJECT_DIR$/srcs/solving.c" />
     </list>
     <ignored path="lemin2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,7 +84,7 @@
             <entry file="file://$PROJECT_DIR$/srcs/solving.c">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+                  <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -128,8 +127,8 @@
           <file leaf-file-name="acquisition.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/srcs/acquisition.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8131868">
-                  <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+                <state vertical-scroll-proportion="0.53846157">
+                  <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -211,9 +210,9 @@
         <option value="$PROJECT_DIR$/srcs/parsing2.c" />
         <option value="$PROJECT_DIR$/srcs/parsing.c" />
         <option value="$PROJECT_DIR$/srcs/paths.c" />
-        <option value="$PROJECT_DIR$/srcs/solving.c" />
         <option value="$PROJECT_DIR$/srcs/main.c" />
         <option value="$PROJECT_DIR$/includes/lemin.h" />
+        <option value="$PROJECT_DIR$/srcs/solving.c" />
         <option value="$PROJECT_DIR$/srcs/acquisition.c" />
       </list>
     </option>
@@ -316,6 +315,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///nfs/zfs-student-3/users/cwagner/42/lemin2/srcs/solving.c" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.lem-in">
     <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="lem-in" TARGET_NAME="libft" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
@@ -390,6 +391,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/srcs/paths.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+          <folding>
+            <element signature="e#892#911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/bfs.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+          <folding>
+            <marker date="1454603240000" expanded="true" signature="0:1" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anthills/30">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/error.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -715,14 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/solving.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -743,6 +764,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/lemin.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -771,18 +800,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/lemin.h">
+    <entry file="file://$PROJECT_DIR$/srcs/solving.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/acquisition.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8131868">
-          <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.53846157">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
